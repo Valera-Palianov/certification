@@ -5,8 +5,11 @@
       "paths": {
           "@components/*": ["src/components/*"],
           "@pages/*": ["src/pages/*"],
-          "@store/*": ["src/store/*"],
+          "@redux/*": ["src/redux/*"],
           "@utils/*": ["src/utils/*"],
+          "@styles/*": ["src/styles/*"],
+          "@mixins/*": ["src/styles/mixins*"],
+          "@api/*": ["src/api/*"],
           "@/*": ["src/*"]
       }
   }

@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Locations from '@pages/Locations'
+import Weather from '@pages/Weather'
+import Layout from '@components/Layout'
+import { Switch, BrowserRouter, Route, Redirect } from 'react-router-dom'
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Layout>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/location/:woeid" component={Weather} />
+            <Route exact path="/" component={Locations} />
+            <Redirect to="/" />
+          </Switch>
+        </BrowserRouter>
+      </Layout>
     </div>
   );
 }
 
-export default App;
+export default App
