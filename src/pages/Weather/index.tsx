@@ -5,9 +5,8 @@ import { useParams, Redirect } from 'react-router-dom'
 import { Woeid } from '@/types/location'
 import { weatherRequest } from '@redux/weather/actions'
 import Header from './Header'
+import Item from './Item'
 import styled from 'styled-components'
-import Container from '@components/Container'
-import formatTemp from '@utils/formatTemp'
 
 interface IUrlParams {
   woeid: string
@@ -17,25 +16,6 @@ const SWeatherContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
-`
-
-const SWeather = styled(Container)`
-  height: 100;
-  padding: 10px;
-`
-const STemp = styled.div`
-  margin-bottom: 12px;
-`
-
-const SDate = styled.div`
-  font-size: 12px;
-`
-
-const SImage = styled.div`
-  height: 64px;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 8px;
 `
 
 const Weather: React.FC = () => {
@@ -68,15 +48,7 @@ const Weather: React.FC = () => {
 
   if(weather.data !== null && weather.data.woeid === intWoeid) {
     content = weather.data.consolidated_weather.map(weather => {
-      return(
-        <SWeather key={weather.id}>
-          <SImage>
-            <img alt={weather.weather_state_abbr} src={`${process.env.REACT_APP_API_URL}static/img/weather/png/64/${weather.weather_state_abbr}.png`}/>
-          </SImage>
-          <STemp>Temp: {formatTemp(parseFloat(weather.the_temp))}</STemp>
-          <SDate>Date: {weather.applicable_date}</SDate>
-        </SWeather>
-      )
+      return <Item key={weather.id} {...weather} />
     })
   } else {
     content = "Nothing"

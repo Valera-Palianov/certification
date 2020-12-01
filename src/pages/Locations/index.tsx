@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { IRootReducer } from '@/types/rootReducer' 
 import { locationsRequest } from '@redux/locations/actions'
-import Container from '@components/Container'
-import formatDistance from '@utils/formatDistance'
+import Item from './Item'
 
 import Tabs from './Tabs'
 import Sort from './Sort'
@@ -21,11 +20,6 @@ const SLocations = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
-`
-
-const SContainer = styled(Container)`
-  height: 100%;
-  padding: 12px;
 `
 
 const Locations: React.FC = () => {
@@ -51,14 +45,7 @@ const Locations: React.FC = () => {
   const locationsJSX = locationsList.map(location => {
     return (
       <Link key={location.woeid} to={`/location/${location.woeid}/`}>
-        <SContainer>
-          <div>
-            <b>{location.title}</b>
-          </div>
-          <div>
-            {formatDistance(location.distance)}
-          </div>
-        </SContainer>
+        <Item {...location} />
       </Link>
     )
   })
