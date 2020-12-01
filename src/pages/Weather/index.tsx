@@ -7,6 +7,7 @@ import { weatherRequest } from '@redux/weather/actions'
 import Header from './Header'
 import Item from './Item'
 import styled from 'styled-components'
+import { below } from '@mixins/breakpoints'
 
 interface IUrlParams {
   woeid: string
@@ -16,6 +17,10 @@ const SWeatherContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
+
+  ${below('md')`
+    display: block;
+  `}
 `
 
 const Weather: React.FC = () => {

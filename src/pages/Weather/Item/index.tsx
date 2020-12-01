@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Container from '@components/Container'
 import { IWeather } from '@/types/weather'
 import formatTemp from '@utils/formatTemp'
+import { below } from '@mixins/breakpoints'
 
 interface IItemProps extends IWeather{
   className?: string
@@ -11,6 +12,10 @@ interface IItemProps extends IWeather{
 const SWeather = styled(Container)`
   height: 100;
   padding: 10px;
+
+  ${below('md')`
+    margin-bottom: 10px;
+  `}
 `
 const STemp = styled.div`
   margin-bottom: 12px;

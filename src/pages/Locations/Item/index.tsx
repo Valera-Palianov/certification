@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Container from '@components/Container'
 import { ILocation } from '@/types/location'
 import formatDistance from '@utils/formatDistance'
+import { below } from '@mixins/breakpoints'
 
 interface IItemProps extends ILocation{
   className?: string
@@ -11,6 +12,9 @@ interface IItemProps extends ILocation{
 const SContainer = styled(Container)`
   height: 100%;
   padding: 12px;
+  ${below('md')`
+    margin-bottom: 10px;
+  `}
 `
 
 const STitle = styled.div`

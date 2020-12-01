@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { IRootReducer } from '@/types/rootReducer' 
 import { locationsRequest } from '@redux/locations/actions'
-import Item from './Item'
+import { below } from '@mixins/breakpoints'
 
+import Item from './Item'
 import Tabs from './Tabs'
 import Sort from './Sort'
 
@@ -20,6 +21,10 @@ const SLocations = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
+
+  ${below('md')`
+    display: block;
+  `}
 `
 
 const Locations: React.FC = () => {

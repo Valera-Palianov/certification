@@ -8,7 +8,7 @@
           "@redux/*": ["src/redux/*"],
           "@utils/*": ["src/utils/*"],
           "@styles/*": ["src/styles/*"],
-          "@mixins/*": ["src/styles/mixins*"],
+          "@mixins/*": ["src/styles/mixins/*"],
           "@api/*": ["src/api/*"],
           "@/*": ["src/*"]
       }
